@@ -16,7 +16,7 @@ const EmployeeList = () => {
   const employeeList = employees.map((employee) => {
     return (
       <li key={employee.id} className="employee-item">
-        <p>
+        <p className='name'>
           {employee.first_name} {employee.last_name}
         </p>
       </li>
