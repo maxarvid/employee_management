@@ -8,9 +8,7 @@ describe("The list of employees", () => {
   });
 
   it("is expected to display a list with 6 items", () => {
-    cy.get("#employee-list").within(() => {
-      cy.find(".employee-item").should("have.length", 6);
-    });
+    cy.get("#employee-list").children().should("have.length", 6);
   });
 
   it("is expected that the list items display the expected content", () => {
