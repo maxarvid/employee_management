@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Item } from "semantic-ui-react";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -15,15 +16,24 @@ const EmployeeList = () => {
 
   const employeeList = employees.map((employee) => {
     return (
-      <li key={employee.id} className="employee-item">
-        <p className='name'>
+      <Item key={employee.id} className="employee-item">
+        <Item.Image
+          className="avatar"
+          circular
+          size="tiny"
+          alt={employee.first_name}
+          src={employee.avatar}
+        />
+        <Item.Content verticalAlign="middle">
+        <Item.Header className="name">
           {employee.first_name} {employee.last_name}
-        </p>
-      </li>
+        </Item.Header>
+        </Item.Content>
+      </Item>
     );
   });
 
-  return <ul id="employee-list">{employeeList}</ul>;
+  return <Item.Group id="employee-list">{employeeList}</Item.Group>;
 };
 
 export default EmployeeList;
