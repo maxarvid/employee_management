@@ -1,13 +1,16 @@
-import React from 'react'
-import EmployeeList from './components/EmployeeList'
+import React from "react";
+import EmployeeList from "./components/EmployeeList";
+import { Container, Header } from "semantic-ui-react";
 
 const App = () => {
   return (
-    <div>
-      <h1 id='header'>Employee List</h1>
+    <Container>
+      <Header size="huge" id="header">
+        Employee List
+      </Header>
       <EmployeeList />
-    </div>
-  )
-}
+    </Container>
+  );
+};
 
-export default App
+export default App;
