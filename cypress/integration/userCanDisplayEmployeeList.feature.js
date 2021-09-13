@@ -1,17 +1,23 @@
-describe('Display list of employees', () => {
+describe("The list of employees", () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit("/");
   });
 
-  it('displays a header', () => {
-    cy.get('#header').should('contain', 'Employee List')
+  it("is expected to display a header", () => {
+    cy.get("#header").should("contain", "Employee List");
   });
 
-  it('displays a list with 6 items', () => {
-    cy.get('#employee-list').within(()=>{
-      cy.find('.employee-item').should('have.length', 6)
-    })
-    
+  it("is expected to display a list with 6 items", () => {
+    cy.get("#employee-list").within(() => {
+      cy.find(".employee-item").should("have.length", 6);
+    });
   });
-  
-})
+
+  it("is expected that the list items display the expected content", () => {
+    cy.get("#employee-list")
+      .children()
+      .first()
+      .find(".name")
+      .should("contain", "George Bluth");
+  });
+});
