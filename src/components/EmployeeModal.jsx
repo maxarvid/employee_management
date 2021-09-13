@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Modal, Image, Header, Button } from "semantic-ui-react";
 
 const EmployeeModal = ({ employee }) => {
   const [open, setOpen] = useState(false);
+  const [singleEmployee, setSingleEmployee] = useState();
+  const getEmployee = async () => {
+    let response = await axios.get(
+      `https://reqres.in/api/users/${employee.id}`
+    );
+    setSingleEmployee(response.data.data);
+  };
 
+  debugger;
   return (
     <Modal
       onClose={() => setOpen(false)}
