@@ -30,7 +30,7 @@ const EmployeeList = () => {
           {employee.first_name} {employee.last_name}
         </Item.Header>
         <Item.Extra>
-          <EmployeeModal employee={employee} />
+          <EmployeeModal id={employee.id} />
         </Item.Extra>
         </Item.Content>
       </Item>

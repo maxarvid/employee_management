@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal, Image, Header, Button } from "semantic-ui-react";
 
-const EmployeeModal = ({ employee }) => {
+const EmployeeModal = ({ id }) => {
   const [open, setOpen] = useState(false);
-  const [singleEmployee, setSingleEmployee] = useState();
+  const [singleEmployee, setSingleEmployee] = useState({});
 
   const getEmployee = async () => {
     let response = await axios.get(
-      `https://reqres.in/api/users/${employee.id}`
+      `https://reqres.in/api/users/${id}`
     );
     setSingleEmployee(response.data.data);
   };
-
-  getEmployee();
+  useEffect(() => {
+    getEmployee();
+  }, []);
 
   return (
     <Modal
@@ -27,12 +28,12 @@ const EmployeeModal = ({ employee }) => {
       }
     >
       <Modal.Content image id="modal-container">
-        <Image className="image" size="small" src={employee.avatar} wrapped />
+        <Image className="image" size="small" src={singleEmployee.avatar} wrapped />
         <Modal.Description>
           <Header className="name">
-            {employee.first_name} {employee.last_name}
+            {singleEmployee.first_name} {singleEmployee.last_name}
           </Header>
-          <p className="email">Email: {employee.email}</p>
+          <p className="email">Email: {singleEmployee.email}</p>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
