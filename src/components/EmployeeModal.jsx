@@ -4,11 +4,11 @@ import { Modal, Image, Header, Button } from "semantic-ui-react";
 
 const EmployeeModal = ({ id }) => {
   const [open, setOpen] = useState(false);
-  const [singleEmployee, setSingleEmployee] = useState({});
+  const [employee, setEmployee] = useState({});
 
   const getEmployee = async () => {
     let response = await axios.get(`https://reqres.in/api/users/${id}`);
-    setSingleEmployee(response.data.data);
+    setEmployee(response.data.data);
   };
 
   return (
@@ -29,14 +29,14 @@ const EmployeeModal = ({ id }) => {
         <Image
           className="image"
           size="small"
-          src={singleEmployee.avatar}
+          src={employee.avatar}
           wrapped
         />
         <Modal.Description>
           <Header className="name">
-            {singleEmployee.first_name} {singleEmployee.last_name}
+            {employee.first_name} {employee.last_name}
           </Header>
-          <p className="email">Email: {singleEmployee.email}</p>
+          <p className="email">Email: {employee.email}</p>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
